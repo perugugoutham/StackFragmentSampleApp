@@ -17,7 +17,9 @@
 
     <Button
         android:id="@+id/next_page"
-        style="@style/StackFragmentButtonStyle"
+        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounded_edges"
         android:text="Next Page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

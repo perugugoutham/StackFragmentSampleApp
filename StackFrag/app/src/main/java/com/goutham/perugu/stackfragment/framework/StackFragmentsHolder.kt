@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.goutham.perugu.stackfragment.R
-import java.lang.RuntimeException
 
 class StackFragmentsHolder : Fragment(),
     BackPressListener,
