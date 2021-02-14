@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/fragments_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="20dp"
+        android:id="@+id/collapse_state_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="EMI"
+            android:id="@+id/emi_title"
+            style="@style/StackFragmentSubTitleTextStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/credit_amount"
+            app:layout_constraintEnd_toStartOf="@id/guide_line"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rs. 4,600/mo"
+            android:id="@+id/credit_amount"
+            style="@style/StackFragmentTitleTextStyle"
+            app:layout_constraintStart_toStartOf="@id/emi_title"
+            app:layout_constraintEnd_toEndOf="@id/emi_title"
+            app:layout_constraintTop_toTopOf="@id/duration_value"
+            app:layout_constraintBottom_toBottomOf="@id/duration_value"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/guide_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dismiss_others_button"
+            app:layout_constraintGuide_percent="0.5"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Duration"
+            android:id="@+id/duration_title"
+            style="@style/StackFragmentSubTitleTextStyle"
+            app:layout_constraintStart_toStartOf="@id/guide_line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/dismiss_others_button"
+            app:layout_constraintBottom_toTopOf="@id/duration_value"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/duration_value"
+            style="@style/StackFragmentTitleTextStyle"
+            android:text="12 months"
+            app:layout_constraintStart_toStartOf="@id/duration_title"
+            app:layout_constraintEnd_toEndOf="@id/duration_title"
+            app:layout_constraintTop_toBottomOf="@id/duration_title"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+            android:id="@+id/dismiss_others_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="20dp"
+        android:id="@+id/expand_state_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/how_do_you_wish_to_repay"
+            style="@style/StackFragmentTitleTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/sub_title_text"/>
+
+        <TextView
+            android:id="@+id/sub_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/StackFragmentSubTitleTextStyle"
+            android:text="@string/choose_one_of_our_recomended_plans_or_make_your_own"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="@id/title_text"
+            app:layout_constraintStart_toStartOf="@id/title_text"
+            app:layout_constraintTop_toBottomOf="@id/title_text"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/recomended_plans_recycler_view"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_text"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

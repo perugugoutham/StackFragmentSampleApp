@@ -1,0 +1,4 @@
+include ':stack'
+include ':app'
+project(':stack').projectDir = new File(rootDir, 'StackFrag/app/')
+rootProject.name = "StackFragSampleApp"
