@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="title_text_color">#7E8792</color>
+    <color name="sub_title_text_color">#393F46</color>
+    <color name="fragments_bg">#151921</color>
+
+    <color name="recommended_period">#A7FFFFFF</color>
+    <color name="recommended_calculation">#62FFFFFF</color>
 </resources>
