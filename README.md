@@ -1,6 +1,8 @@
 # StackFragment UI library
 
-The library can you used to provide a stacked UI format for collecting information or choosing options related to a same topic.
+This library allows you to seamlessly add fragments that can be collapsed and expanded giving a cool deck view.
+
+![](stack_frag_gif.gif)
 
 ## Usage
 - Clone the project
