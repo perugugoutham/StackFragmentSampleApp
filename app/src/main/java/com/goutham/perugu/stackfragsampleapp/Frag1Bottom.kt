@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.goutham.perugu.stackfragment.framework.CustomStackFragment
 import com.goutham.perugu.stackfragment.framework.InteractionListener
 
-class Frag1Bottom: CustomStackFragment() {
+class Frag1Bottom : CustomStackFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,26 +26,24 @@ class Frag1Bottom: CustomStackFragment() {
     }
 
     override fun onStateChanged(isExpanded: Boolean) {
-        view?.post {
-            val collapseViewGroup = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
-            val expandViewGroup = requireView().findViewById<ViewGroup>(R.id.expand_state_container)
-            if (!isExpanded){
-                collapseViewGroup.visibility = View.VISIBLE
-                expandViewGroup.visibility = View.GONE
-            }else {
-                collapseViewGroup.visibility = View.GONE
-                expandViewGroup.visibility = View.VISIBLE
-            }
+        val collapseViewGroup = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
+        val expandViewGroup = requireView().findViewById<ViewGroup>(R.id.expand_state_container)
+        if (!isExpanded) {
+            collapseViewGroup.visibility = View.VISIBLE
+            expandViewGroup.visibility = View.GONE
+        } else {
+            collapseViewGroup.visibility = View.GONE
+            expandViewGroup.visibility = View.VISIBLE
         }
+
 
     }
 
     override fun setInteractionListener(interactionListener: InteractionListener) {
-        view?.post {
-            val collapseViewGroup = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
-            collapseViewGroup.setOnClickListener {
-                interactionListener.dismissOthers(getFragTag())
-            }
+        val collapseViewGroup =
+            requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
+        collapseViewGroup.setOnClickListener {
+            interactionListener.dismissOthers(getFragTag())
         }
     }
 

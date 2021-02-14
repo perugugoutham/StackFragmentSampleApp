@@ -49,27 +49,22 @@ class Frag2Bottom: CustomStackFragment() {
     }
 
     override fun setInteractionListener(interactionListener: InteractionListener) {
-        view?.post {
-            val collapseContainer = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
-            collapseContainer.setOnClickListener {
-                interactionListener.dismissOthers(getFragTag())
-            }
+        val collapseContainer = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
+        collapseContainer.setOnClickListener {
+            interactionListener.dismissOthers(getFragTag())
         }
     }
 
     override fun onStateChanged(isExpanded: Boolean) {
-        view?.post {
-            val collapseContainer = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
-            val expandContainer = requireView().findViewById<ViewGroup>(R.id.expand_state_container)
-            if (!isExpanded){
-                collapseContainer.visibility = View.VISIBLE
-                expandContainer.visibility = View.GONE
-            }else {
-                collapseContainer.visibility = View.GONE
-                expandContainer.visibility = View.VISIBLE
-            }
+        val collapseContainer = requireView().findViewById<ViewGroup>(R.id.collapse_state_container)
+        val expandContainer = requireView().findViewById<ViewGroup>(R.id.expand_state_container)
+        if (!isExpanded){
+            collapseContainer.visibility = View.VISIBLE
+            expandContainer.visibility = View.GONE
+        }else {
+            collapseContainer.visibility = View.GONE
+            expandContainer.visibility = View.VISIBLE
         }
-
     }
 }
 

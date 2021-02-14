@@ -44,7 +44,7 @@ class StackFragmentsHolder : Fragment(),
         val fragObject = childFragmentManager.findFragmentByTag(customStackFragment.getFragTag())
         if (fragObject == null) {
             launchFragment(customStackFragment, false)
-            customStackFragment.setInteractionListener(this)
+            setInteractionListener(customStackFragment)
         }
     }
 
@@ -65,7 +65,19 @@ class StackFragmentsHolder : Fragment(),
             fragmentTransaction.addToBackStack(customStackFragment.getFragTag())
         }
         fragmentTransaction.commit()
-        customStackFragment.onStateChanged(true)
+        onStateChanged(customStackFragment, true)
+    }
+
+    private fun onStateChanged(customStackFragment: CustomStackFragment, isExpanded: Boolean) {
+        customStackFragment.view?.post {
+            customStackFragment.onStateChanged(isExpanded)
+        }
+    }
+
+    private fun setInteractionListener(customStackFragment: CustomStackFragment) {
+        customStackFragment.view?.post {
+            customStackFragment.setInteractionListener(this)
+        }
     }
 
     private fun navigateToNext() {
@@ -76,8 +88,8 @@ class StackFragmentsHolder : Fragment(),
                 launchFragment(customStackFragment, true)
 
                 val previousFragment = fragmentsList[index - 1]
-                previousFragment.onStateChanged(false)
-                previousFragment.setInteractionListener(this)
+                onStateChanged(previousFragment, false)
+                setInteractionListener(previousFragment)
 
                 return
             }
@@ -91,7 +103,7 @@ class StackFragmentsHolder : Fragment(),
             if (fragObject == null) {
                 if (index != 0) {
                     val previousFragment = fragmentsList[index - 1]
-                    previousFragment.onStateChanged(true)
+                    onStateChanged(previousFragment, true)
                 }
             }
         }
@@ -103,7 +115,7 @@ class StackFragmentsHolder : Fragment(),
             if (!isFound) {
                 if (it.getFragTag() == currentFragmentTag) {
                     isFound = true
-                    it.onStateChanged(true)
+                    onStateChanged(it, true)
                 }
             } else {
                 childFragmentManager.popBackStack()
