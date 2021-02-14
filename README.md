@@ -1,6 +1,6 @@
 # StackFragment UI library
 
-This library allows you to seamlessly add fragments that can be collapsed and expanded giving a cool deck view.
+This library allows you to seamlessly add fragments that can be collapsed and expanded giving a cool stack view.
 
 ![](stack_frag_gif.gif)
 
